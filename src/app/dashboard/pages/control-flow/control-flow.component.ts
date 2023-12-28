@@ -14,4 +14,4 @@ import { Component } from '@angular/core';
     }
   `,
 })
-export class ControlFlowComponent { }
+export default class ControlFlowComponent { }
