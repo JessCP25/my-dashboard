@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 
+type Grade = 'A' | 'B' | 'F';
+
 @Component({
   selector: 'app-control-flow',
   standalone: true,
@@ -16,6 +18,7 @@ import { Component, signal } from '@angular/core';
 })
 export default class ControlFlowComponent {
   public showContent = signal(false);
+  public grades = signal<Grade>('A');
 
   public toggleContent() {
     this.showContent.update(value => !value);
