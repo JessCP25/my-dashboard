@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { User, UsersResponse } from '@interfaces/users.interface';
+import { Personajes, Result } from '@interfaces/users.interface';
 import { delay } from 'rxjs';
 
 interface State {
-  users: User[];
+  users: Result[];
   loading: boolean;
 }
 
@@ -24,12 +24,12 @@ export class UsersService {
   public loading = computed(()=> this.#state().loading)
 
   constructor() {
-    this.http.get<UsersResponse>('https://regres.in/api/users')
+    this.http.get<Personajes>('https://rickandmortyapi.com/api/character')
       .pipe(delay(1000))
       .subscribe(res => {
         this.#state.set({
           loading: false,
-          users: res.data,
+          users: res.results,
         })
       })
   }
