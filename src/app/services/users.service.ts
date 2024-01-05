@@ -34,5 +34,8 @@ export class UsersService {
       })
   }
 
-
+  getUserById(id: string) {
+    return this.http.get<Result>(`https://rickandmortyapi.com/api/character/${id}`)
+      .pipe(delay(1000))
+  }
 }
